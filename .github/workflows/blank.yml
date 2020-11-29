@@ -47,6 +47,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
+          working-directory: ../
           source-directory: 'pb-nodejs'
           destination-github-username: 'kekhuay'
           destination-repository-name: 'nextershop-pb-nodejs'
