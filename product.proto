@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package product;
+
+option java_multiple_files = true;
+option java_package = "com.nexterdigitals.nextershop.product";
+option java_outer_classname = "ProductProto";
+
+message Product {
+  string sap_product_id = 1;
+  string product_id = 2;
+  string category_id = 3;
+  string categories = 4;
+  string variant_id = 5;
+  bool visible = 6;
+  string product_type = 7;
+  string name = 8;
+  string brand = 9;
+  uint32 minimum_purchase = 10;
+  float service_charge = 11;
+  string image = 12;
+  string usage = 13;
+  string description = 14;
+  string specification = 15;
+  string barcode = 16;
+  string article_id = 17;
+  string color = 18;
+  string size = 19;
+  float price = 20;
+  float special_price = 21;
+  float shipping_cost = 22;
+  string unit = 23;
+  string unit_code = 24;
+  string service = 25;
+  string keyword = 26;
+  string type = 27;
+  string partner = 28;
+  string phase_type = 29;
+  string shipping_type = 30;
+  string pattern_tiles = 31;
+  uint32 pack_in_box = 32;
+  string tile_square = 33;
+  string variant_image = 34;
+  string product_image = 35;
+}

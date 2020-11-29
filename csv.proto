@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+import "product.proto";
+import "uploaded_file.proto";
+
+package csv;
+
+option java_multiple_files = true;
+option java_package = "com.nexterdigitals.nextershop.csv";
+option java_outer_classname = "CsvProto";
+
+message Payload {
+  oneof data {
+    product.Product product = 1;
+  }
+}
+
+message Request {
+  string name = 1;
+  repeated Payload payload = 2;
+}
+
+service CsvService {
+  rpc generate (Request) returns (uploadedfile.UploadedFile) {}
+}
