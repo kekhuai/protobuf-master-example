@@ -38,6 +38,14 @@ jobs:
       - name: generate pb
         run: |
           cd ..
-          git clone git@github.com:kekhuay/nextershop-pb-nodejs.git
-          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./protobuf --js_out=import_style=commonjs,binary:./nextershop-pb-nodejs --grpc_out=grpc_js:./nextershop-pb-nodejs ./protobuf/*.proto
-          ls ./nextershop-pb-nodejs
+          mkdir pb-nodejs
+          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./protobuf --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./protobuf/*.proto
+          ls ./pb-nodejs
+
+      - name: Pushes to nextershop-pb-nodejs
+        uses: cpina/github-action-push-to-another-repository@master
+        with:
+          source-directory: 'pb-nodejs'
+          destination-github-username: 'kekhuay'
+          destination-repository-name: 'nextershop-pb-nodejs'
+          user-email: kekhuay@users.noreply.github.com
