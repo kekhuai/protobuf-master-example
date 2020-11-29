@@ -44,6 +44,8 @@ jobs:
 
       - name: Pushes to nextershop-pb-nodejs
         uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-directory: 'pb-nodejs'
           destination-github-username: 'kekhuay'
