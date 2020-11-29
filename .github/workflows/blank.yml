@@ -38,7 +38,7 @@ jobs:
       - name: generate pb
         run: |
           mkdir pb-nodejs
-          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./protobuf --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./*.proto
+          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./*.proto
           ls ./pb-nodejs
 
       - name: Pushes to nextershop-pb-nodejs
