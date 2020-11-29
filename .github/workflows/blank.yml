@@ -38,4 +38,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: list directory
-        run: ls -alF
+        run: |
+          cd ..
+          ls -alF
