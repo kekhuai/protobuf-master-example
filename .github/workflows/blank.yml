@@ -24,9 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: actions/checkout@master
-        with:
-          repository: kekhuay/nextershop-pb-nodejs
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -37,7 +34,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: list directory
+
+      - name: generate pb
         run: |
           cd ..
-          ls -alF
+          mkdir pb-nodejs
+          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./protobuf --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./protobuf/*.proto
+          ls ./pb-nodejs
