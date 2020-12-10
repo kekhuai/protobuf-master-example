@@ -35,5 +35,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: './pb-nodejs/*'
+          source_file: 'pb-nodejs/*'
           destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-nodejs'
+          user_email: 'kekhuay@users.noreply.github.com'
+          user_name: 'kekhuay'
