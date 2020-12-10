@@ -25,21 +25,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/checkout@v2
-        repository: kekhuay/nextershop-pb-nodejs
-        path: ./
+        with:
+          repository: kekhuay/nextershop-pb-nodejs
+          path: ./
 
       - name: generate pb
         run: |
-          mkdir pb-nodejs
-          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./*.proto
-          ls ./pb-nodejs
+          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./nextershop-pb-nodejs --grpc_out=grpc_js:./nextershop-pb-nodejs ./*.proto
+          ls ./nextershop-pb-nodejs
 
       - name: Pushes to nextershop-pb-nodejs
         uses: cpina/github-action-push-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'pb-nodejs'
+          source-directory: 'nextershop-pb-nodejs'
           destination-github-username: 'kekhuay'
           destination-repository-name: 'nextershop-pb-nodejs'
           user-email: kekhuay@users.noreply.github.com
