@@ -41,5 +41,5 @@ message Product {
   uint32 pack_in_box = 32;
   string tile_square = 33;
   string variant_image = 34;
-  string product_image = 36;
+  string product_image = 35;
 }
