@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p generated/java
           mkdir -p generated/grpckt
-          wget https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar
+          curl https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar --output protoc-gen-grpc-kotlin-1.0.0-jdk7.jar
           ls
           # echo '#!/usr/bin/env sh\nDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"\njava -jar $DIR/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar "$@"\n' > protoc-gen-grpc-kotlin.sh
           # chmod +x protoc-gen-grpc-kotlin.sh
