@@ -29,7 +29,7 @@ jobs:
         run: |
           mkdir pb-nodejs
           npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./*.proto
-          ls pb-nodejs
+          ls
 
       - name: Pushes to nextershop-pb-nodejs
         uses: dmnemec/copy_file_to_another_repo_action@master
@@ -38,5 +38,3 @@ jobs:
         with:
           source_file: 'pb-nodejs/*'
           destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-nodejs'
-          user_email: 'kekhuay@users.noreply.github.com'
-          user_name: 'kekhuay'
