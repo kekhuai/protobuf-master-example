@@ -32,6 +32,8 @@ jobs:
           wget https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar
           echo '#!/usr/bin/env sh\nDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"\njava -jar $DIR/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar "$@"\n' > protoc-gen-grpc-kotlin.sh
           chmod +x protoc-gen-grpc-kotlin.sh
-          protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="./grpckt" --java_out="./java"  --proto_path="./" *.proto
-          ls generated/java
-          ls generated/grpckt
+      
+      - name: Genereate code for squzy-storage protofile
+        uses: squzy/protoc-actions@v2.0.9
+        with:
+          path: --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="./grpckt" --java_out="./java"  --proto_path="./" *.proto
