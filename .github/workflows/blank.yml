@@ -39,3 +39,4 @@ jobs:
           destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-nodejs'
           user_email: 'kekhuay@users.noreply.github.com'
           user_name: 'kekhuay'
+          commit_message: 'Update minor version from https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}'
