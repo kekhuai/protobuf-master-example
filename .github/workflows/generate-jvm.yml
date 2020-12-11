@@ -13,6 +13,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  PROTOC_GEN_GRPC_KOTLIN_VERSION: '1.0.0'
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -34,10 +37,10 @@ jobs:
 
       - name: Generate JVM
         env:
-          PROTOC_GEN_GRPC_KOTLIN_VERSION: '1.0.0'
+          PROTOC_GEN_GRPC_KOTLIN_JAR_URL: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-${{ env.PROTOC_GEN_GRPC_KOTLIN_VERSION }}-jdk7.jar
         run: |
           mkdir -p generated/java
           mkdir -p generated/grpckt
-          curl "https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-${PROTOC_GEN_GRPC_KOTLIN_VERSION}-jdk7.jar" --output "protoc-gen-grpc-kotlin-${PROTOC_GEN_GRPC_KOTLIN_VERSION}-jdk7.jar"
+          wget $PROTOC_GEN_GRPC_KOTLIN_JAR_URL
           chmod +x protoc-gen-grpc-kotlin.sh
           protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="./generated/grpckt" --java_out="./generated/java"  --proto_path="./" *.proto
