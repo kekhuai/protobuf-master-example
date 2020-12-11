@@ -27,16 +27,16 @@ jobs:
 
       - name: Generate JavaScript
         run: |
-          mkdir pb-nodejs
-          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-nodejs --grpc_out=grpc_js:./pb-nodejs ./*.proto
+          mkdir pb-js
+          npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-js --grpc_out=grpc_js:./pb-js ./*.proto
 
-      - name: Pushes to nextershop-pb-nodejs
+      - name: Pushes to nextershop-pb-js
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'pb-nodejs/*'
-          destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-nodejs'
+          source_file: 'pb-js/*'
+          destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-js'
           user_email: 'kekhuay@users.noreply.github.com'
           user_name: 'kekhuay'
           commit_message: 'Update minor version from https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}'
