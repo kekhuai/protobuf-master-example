@@ -42,4 +42,4 @@ jobs:
           echo 'java -jar $DIR/protoc-gen-grpc-kotlin-1.0.0-jdk7.jar "$@"' >> protoc-gen-grpc-kotlin.sh
           chmod +x protoc-gen-grpc-kotlin.sh
           protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="./generated/grpckt" --java_out="./generated/java"  --proto_path="./" *.proto
-          ls generated/java/com/nexterdigitals/nextershop
+          ls generated/java/com/nexterdigitals/nextershop/product
