@@ -38,9 +38,13 @@ jobs:
       - name: Generate JVM
         env:
           PROTOC_GEN_GRPC_KOTLIN_JAR_URL: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.0.0/protoc-gen-grpc-kotlin-${{ env.PROTOC_GEN_GRPC_KOTLIN_VERSION }}-jdk7.jar
+          PROTOC_GEN_GRPC_JAVA_URL: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.34.0/protoc-gen-grpc-java-1.34.0-linux-x86_64.exe
+          PROTOC_GEN_GRPC_JAVA_FILE_NAME: protoc-gen-grpc-java.exe
         run: |
           mkdir -p generated/java
           mkdir -p generated/grpckt
+          mkdir -p generated/grpc
           wget $PROTOC_GEN_GRPC_KOTLIN_JAR_URL
+          wget $PROTOC_GEN_GRPC_JAVA_URL -O $PROTOC_GEN_GRPC_JAVA_FILE_NAME
           chmod +x protoc-gen-grpc-kotlin.sh
-          protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out="./generated/grpckt" --java_out="./generated/java"  --proto_path="./" *.proto
+          protoc --plugin=protoc-gen-grpc-java=${{ env.PROTOC_GEN_GRPC_JAVA_FILE_NAME }} --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpc-java_out="./generated/grpc" --grpckt_out="./generated/grpckt" --java_out="./generated/java" --proto_path="./" *.proto
