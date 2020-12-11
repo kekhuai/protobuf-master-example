@@ -12,7 +12,7 @@ option java_outer_classname = "CsvProto";
 
 message Payload {
   oneof data {
-    product.Product product = 1;
+    product.v1.Product product = 1;
   }
 }
 
@@ -22,5 +22,5 @@ message Request {
 }
 
 service CsvService {
-  rpc generate (Request) returns (uploadedfile.UploadedFile) {}
+  rpc generate (Request) returns (uploadedfile.v1.UploadedFile) {}
 }
