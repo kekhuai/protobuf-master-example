@@ -7,7 +7,7 @@ import "uploaded_file.proto";
 package csv.v1;
 
 option java_multiple_files = true;
-option java_package = "com.nexterdigitals.nextershop.pb.csv";
+option java_package = "com.nexterdigital.nextershop.pb.csv";
 option java_outer_classname = "CsvProto";
 
 message Payload {

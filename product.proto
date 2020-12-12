@@ -3,7 +3,7 @@ syntax = "proto3";
 package product.v1;
 
 option java_multiple_files = true;
-option java_package = "com.nexterdigitals.nextershop.pb.product";
+option java_package = "com.nexterdigital.nextershop.pb.product";
 option java_outer_classname = "ProductProto";
 
 message Product {

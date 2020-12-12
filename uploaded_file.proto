@@ -3,7 +3,7 @@ syntax = "proto3";
 package uploadedfile.v1;
 
 option java_multiple_files = true;
-option java_package = "com.nexterdigitals.nextershop.pb.uploadedfile";
+option java_package = "com.nexterdigital.nextershop.pb.uploadedfile";
 option java_outer_classname = "UploadedFileProto";
 
 message UploadedFile {
