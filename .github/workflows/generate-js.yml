@@ -1,28 +1,16 @@
-# This is a basic workflow to help you get started with Actions
+name: Generate JavaScript
 
-name: CI
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Generate JavaScript
@@ -30,13 +18,13 @@ jobs:
           mkdir pb-js
           npx -p grpc-tools grpc_tools_node_protoc --proto_path=./ --js_out=import_style=commonjs,binary:./pb-js --grpc_out=grpc_js:./pb-js ./*.proto
 
-      - name: Pushes to nextershop-pb-js
+      - name: Pushes generated files to JavaScript repository
         uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_file: 'pb-js/*'
-          destination_repo: 'SCGWEDOtech/nexter-p2-nextershop-pb-js'
+          destination_repo: 'kekhuay/protobuf-js-example'
           user_email: 'kekhuay@users.noreply.github.com'
           user_name: 'kekhuay'
           commit_message: 'Update minor version from https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}'
