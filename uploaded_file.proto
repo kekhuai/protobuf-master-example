@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package uploadedfile.v1;
 
 option java_multiple_files = true;
@@ -11,4 +13,8 @@ message UploadedFile {
   string source = 2;
   uint64 created_at = 3;
   uint64 updated_at = 4;
+}
+
+service UploadedFileService {
+  rpc init (google.protobuf.Empty) returns (UploadedFile) {}
 }
