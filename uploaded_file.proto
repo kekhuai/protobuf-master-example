@@ -16,7 +16,7 @@ message UploadedFile {
 }
 
 message Response {
-  repeated UploadedFile uploadedFiles = 1;
+  repeated UploadedFile uploaded_files = 1;
 }
 
 service UploadedFileService {
