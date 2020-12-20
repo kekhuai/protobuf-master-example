@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
 package uploadedfile.v1;
@@ -16,7 +15,7 @@ message UploadedFile {
   google.protobuf.Timestamp updated_at = 4;
 }
 
-message Request {
+message CreateRequest {
   string source = 1;
 }
 
@@ -24,7 +23,12 @@ message Response {
   repeated UploadedFile uploaded_files = 1;
 }
 
+message QueryRequest {
+  string id = 1;
+}
+
 service UploadedFileService {
-  rpc create (Request) returns (UploadedFile) {}
-  rpc readAll (google.protobuf.Empty) returns (Response) {}
+  rpc create (CreateRequest) returns (UploadedFile) {}
+  rpc readBy (QueryRequest) returns (Response) {}
+  rpc readOne (QueryRequest) returns (UploadedFile) {}
 }
