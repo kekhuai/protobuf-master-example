@@ -16,10 +16,15 @@ message UploadedFile {
   google.protobuf.Timestamp updated_at = 4;
 }
 
+message Request {
+  string source = 1;
+}
+
 message Response {
   repeated UploadedFile uploaded_files = 1;
 }
 
 service UploadedFileService {
-  rpc init (google.protobuf.Empty) returns (Response) {}
+  rpc create (Request) returns (UploadedFile) {}
+  rpc readAll (google.protobuf.Empty) returns (Response) {}
 }
