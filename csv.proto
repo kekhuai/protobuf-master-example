@@ -19,6 +19,7 @@ message Payload {
 message Request {
   string name = 1;
   repeated Payload payload = 2;
+  string id = 3;
 }
 
 service CsvService {
