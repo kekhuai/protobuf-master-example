@@ -1,8 +1,8 @@
 syntax = "proto3";
 
 import "google/protobuf/descriptor.proto";
+import "google/protobuf/empty.proto";
 import "product.proto";
-import "uploaded_file.proto";
 
 package csv.v1;
 
@@ -23,5 +23,5 @@ message Request {
 }
 
 service CsvService {
-  rpc generate (Request) returns (uploadedfile.v1.UploadedFile) {}
+  rpc generate (Request) returns (google.protobuf.Empty) {}
 }
