@@ -11,12 +11,14 @@ option java_outer_classname = "UploadedFileProto";
 message UploadedFile {
   string id = 1;
   string source = 2;
-  google.protobuf.Timestamp created_at = 3;
-  google.protobuf.Timestamp updated_at = 4;
+  string name = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
 }
 
 message CreateRequest {
   string source = 1;
+  string name = 2;
 }
 
 message Response {
